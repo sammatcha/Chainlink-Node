@@ -15,9 +15,11 @@ remember to ssh to the docker linode!
 curl -sSL https://get.docker.com/ | sh
 sudo usermod -aG docker $USER
 exit
+#log in again
 ```
 Note: I used Debian
 
+ssh back into your server
 ### Create a directory
 Local directory to hold Chainlink data
 ``` 
