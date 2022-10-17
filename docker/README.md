@@ -10,7 +10,10 @@ Note:
 
 ## Steps to deploying Chainlink Node!
 ### Using Docker
-remember to ssh to the docker linode!
+1. ssh into server as root
+```
+ssh root@ XXX.XXX.XXX.XX
+```
 ```
 curl -sSL https://get.docker.com/ | sh
 sudo usermod -aG docker $USER
@@ -19,7 +22,7 @@ exit
 ```
 Note: I used Debian
 
-ssh back into your server
+2. ssh back into your server
 ### Create a directory
 Local directory to hold Chainlink data
 ``` 
@@ -49,15 +52,18 @@ to get into psql:
 ```
 psql -h lin-9769-2282-pgsql-primary.servers.linodedb.net -U linpostgres -d postgres
 ```
+- the server name is from db made in linode
 once in psql:
 ``` 
 CREATE DATABASE chainlink1;
 ```
-ssh back into docker linode
+3. ssh back into docker linode
 ### Set remote Database_URL Config
 ```
 echo "DATABASE_URL=postgresql://$USERNAME:$PASSWORD@$SERVER:$PORT/$DATABASE" >> ~/.chainlink-goerli/.env
 ```
+##### Replace $USERNAME, $PASSWORD, $SERVER, $PORT, $DATABASE respectively
+##### information is found on linode db
 Note: I had to cat .env to look at my environment file to ensure I had everything needed
 steps:
 ```
@@ -69,7 +75,7 @@ steps:
 ```
 
 # Start Chainlink Node
-Log into instance:
+4. Log into instance:
 ```
 ssh <user ip> -L 6688:localhost:6688
 ```
