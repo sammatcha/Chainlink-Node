@@ -7,8 +7,10 @@ Note:
 - SSH Acess of Docker Linode to VS Code
 - Goerli
 
+
 ## Steps to deploying Chainlink Node!
 ### Using Docker
+remember to ssh to the docker linode!
 ```
 curl -sSL https://get.docker.com/ | sh
 sudo usermod -aG docker $USER
@@ -40,14 +42,16 @@ Note: ChangeMe is where the Infura url goes
 
 ## Set Database_URL Environment Variable
 I created database, chainlink1 though PSQL <br>
-``` 
-CREATE DATABASE chainlink1;
-```
 Note:
 to get into psql:
 ```
 psql -h lin-9769-2282-pgsql-primary.servers.linodedb.net -U linpostgres -d postgres
 ```
+once in psql:
+``` 
+CREATE DATABASE chainlink1;
+```
+ssh back into docker linode
 ### Set remote Database_URL Config
 ```
 echo "DATABASE_URL=postgresql://$USERNAME:$PASSWORD@$SERVER:$PORT/$DATABASE" >> ~/.chainlink-goerli/.env
